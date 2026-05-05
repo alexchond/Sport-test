@@ -1,0 +1,191 @@
+{
+	"info": {
+		"name": "Sports Match API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	],
+	"item": [
+		{
+			"name": "Matches",
+			"item": [
+				{
+					"name": "Get all matches",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/matches",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "matches"]
+						}
+					}
+				},
+				{
+					"name": "Get match by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/matches/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "matches", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create match",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"OSFP-PAO\",\n  \"matchDate\": \"2021-03-31\",\n  \"matchTime\": \"12:00:00\",\n  \"teamA\": \"OSFP\",\n  \"teamB\": \"PAO\",\n  \"sport\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/matches",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "matches"]
+						}
+					}
+				},
+				{
+					"name": "Update match",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"OSFP-PAO updated\",\n  \"matchDate\": \"2021-04-01\",\n  \"matchTime\": \"15:00:00\",\n  \"teamA\": \"OSFP\",\n  \"teamB\": \"PAO\",\n  \"sport\": 1\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/matches/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "matches", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete match",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/matches/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "matches", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Match Odds",
+			"item": [
+				{
+					"name": "Get all odds",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/match-odds",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "match-odds"]
+						}
+					}
+				},
+				{
+					"name": "Get odds by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/match-odds/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "match-odds", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get odds by match",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/match-odds/match/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "match-odds", "match", "1"]
+						}
+					}
+				},
+				{
+					"name": "Add odds for a match",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"specifier\": \"X\",\n  \"odd\": 1.5\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/match-odds?matchId=1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "match-odds"],
+							"query": [
+								{
+									"key": "matchId",
+									"value": "1"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Update odds",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"specifier\": \"1\",\n  \"odd\": 2.3\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/match-odds/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "match-odds", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete odds",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/match-odds/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "match-odds", "1"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
